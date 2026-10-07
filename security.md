@@ -1,6 +1,6 @@
 Security & Privacy Policy for Taylor Andrews Campaign
 Effective Date: 10/06/2026
-Last Updated: 04/06/2027
+END Date: 02/01/2026
 
 1. Introduction
 Taylor Andrews Campaign is committed to safeguarding the personal information, voting preferences, and financial data of our supporters. This Security Policy outlines the technical and organizational measures we employ to protect our website, donor database, and volunteer network against unauthorized access, data breaches, and cyber threats.
