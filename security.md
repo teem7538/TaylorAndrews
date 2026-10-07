@@ -8,7 +8,7 @@ Taylor Andrews Campaign is committed to safeguarding the personal information, v
 2. Scope
 This policy applies to:
 
-The public-facing website https://teem7538.github.io/
+The public-facing website https://teem7538.github.io/TaylorAndrews/
 Backend systems (CRM, email marketing platforms, donation processors).
 All volunteers, staff, and third-party contractors with access to campaign data.
 
