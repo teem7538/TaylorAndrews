@@ -162,6 +162,7 @@ span {
         flex-wrap: wrap;
     }
 
+   /* Fix hero-meta*/
     .hero-meta {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 20px;
