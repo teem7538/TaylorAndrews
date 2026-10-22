@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 /* Success */
 
                 formMessage.textContent =
-                    `Thank you, ${name}. Your message has been recorded for this demo.`;
+                    `Thank you, ${name}. Your message has been recorded.`;
 
                 formMessage.style.color =
                     "#185b88";
