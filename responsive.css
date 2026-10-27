@@ -564,3 +564,16 @@ span {
         transition-duration: 0.01ms !important;
     }
 }
+
+@media (max-width: 768px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .portrait-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
