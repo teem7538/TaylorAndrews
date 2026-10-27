@@ -1036,15 +1036,6 @@ textarea {
     color: var(--gray);
 }
 
-.contact-form {
-    padding: 35px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    background: var(--cream);
-}
 
 .input-group {
     margin-bottom: 22px;
