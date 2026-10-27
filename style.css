@@ -1309,10 +1309,14 @@ footer {
         padding: 25px;
     }
 
-   .Freedom {
+   .red {
       font-weight: 800;
       color: red;
    }
+
+   .blue {
+      font-weight: 800;
+      color: blue;
 }
 
 
