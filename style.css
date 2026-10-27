@@ -1317,5 +1317,26 @@ footer {
       color: blue;
    }
 
+   
+.form-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+#contactSubmit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+#contactStatus {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
 
 
