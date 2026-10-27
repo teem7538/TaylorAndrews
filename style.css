@@ -1510,6 +1510,16 @@ footer {
     }
 }
 
+   /* CSS-only fallback if you don't want to restructure the HTML */
+#contact-form { display: flex; flex-direction: column; gap: 1rem; max-width: 640px; }
+#contact-form > * { display: contents; }
+#contact-form label { font-weight: 600; }
+#contact-form input, #contact-form textarea {
+  width: 100%; box-sizing: border-box; padding: .75rem 1rem;
+  border: 1px solid #c9ced6; border-radius: 8px; font: inherit;
+}
+#contact-form button[type="submit"] { width: 100%; border-radius: 8px; }
+
 
 
 
