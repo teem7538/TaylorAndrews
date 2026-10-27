@@ -95,48 +95,72 @@ filters.forEach(filter => {
    CONTACT FORM
 ================================= */
 
+/* =====================================
+   FORMSPREE CONTACT FORM
+===================================== */
+
 const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
 
-contactForm.addEventListener("submit", event => {
+if (contactForm) {
+    const contactStatus = document.getElementById("contactStatus");
+    const contactSubmit = document.getElementById("contactSubmit");
 
-    event.preventDefault();
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    const name = document
-        .getElementById("name")
-        .value
-        .trim();
+        if (!contactForm.reportValidity()) return;
 
-    const email = document
-        .getElementById("email")
-        .value
-        .trim();
+        const originalButtonText = contactSubmit.textContent;
 
-    const message = document
-        .getElementById("message")
-        .value
-        .trim();
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = "Sending...";
+        contactStatus.textContent = "Sending your message...";
+        contactStatus.style.color = "";
 
+        try {
+            const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
 
-    if (!name || !email || !message) {
+            if (response.ok) {
+                contactStatus.textContent =
+                    "Thank you! Your message was sent successfully.";
+                contactStatus.style.color = "#218838";
+                contactForm.reset();
+            } else {
+                let message =
+                    "We couldn't send your message. Please try again.";
 
-        formMessage.textContent =
-            "Please complete all fields.";
+                try {
+                    const result = await response.json();
 
-        formMessage.style.color = "#d52b3c";
+                    if (result.errors && result.errors.length) {
+                        message = result.errors
+                            .map(error => error.message)
+                            .join(" ");
+                    }
+                } catch (_) {
+                    // Use the default error message.
+                }
 
-        return;
-    }
+                contactStatus.textContent = message;
+                contactStatus.style.color = "#d52b3c";
+            }
+        } catch (error) {
+            contactStatus.textContent =
+                "Connection error. Please check your internet and try again.";
+            contactStatus.style.color = "#d52b3c";
+        } finally {
+            contactSubmit.disabled = false;
+            contactSubmit.textContent = originalButtonText;
+        }
+    });
+}
 
-
-    formMessage.textContent =
-        `Thank you, ${name}. Your message has been recorded for this demo.`;
-
-    formMessage.style.color = "#185b88";
-
-    contactForm.reset();
-
-});
 
 
 /* =================================
