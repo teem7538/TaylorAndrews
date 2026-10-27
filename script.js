@@ -99,67 +99,57 @@ filters.forEach(filter => {
    FORMSPREE CONTACT FORM
 ===================================== */
 
+
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
-    const contactStatus = document.getElementById("contactStatus");
-    const contactSubmit = document.getElementById("contactSubmit");
-
-    contactForm.addEventListener("submit", async function (event) {
+    contactForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        if (!contactForm.reportValidity()) return;
+        const button = contactForm.querySelector(
+            'button[type="submit"]'
+        );
 
-        const originalButtonText = contactSubmit.textContent;
+        let status = document.getElementById("contactStatus");
 
-        contactSubmit.disabled = true;
-        contactSubmit.textContent = "Sending...";
-        contactStatus.textContent = "Sending your message...";
-        contactStatus.style.color = "";
+        if (!status) {
+            status = document.createElement("p");
+            status.id = "contactStatus";
+            status.setAttribute("role", "status");
+            status.setAttribute("aria-live", "polite");
+            contactForm.appendChild(status);
+        }
+
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = "Sending...";
+        status.textContent = "";
 
         try {
             const response = await fetch(contactForm.action, {
                 method: "POST",
                 body: new FormData(contactForm),
-                headers: {
-                    "Accept": "application/json"
-                }
+                headers: { Accept: "application/json" }
             });
 
-            if (response.ok) {
-                contactStatus.textContent =
-                    "Thank you! Your message was sent successfully.";
-                contactStatus.style.color = "#218838";
-                contactForm.reset();
-            } else {
-                let message =
-                    "We couldn't send your message. Please try again.";
-
-                try {
-                    const result = await response.json();
-
-                    if (result.errors && result.errors.length) {
-                        message = result.errors
-                            .map(error => error.message)
-                            .join(" ");
-                    }
-                } catch (_) {
-                    // Use the default error message.
-                }
-
-                contactStatus.textContent = message;
-                contactStatus.style.color = "#d52b3c";
+            if (!response.ok) {
+                throw new Error("Form submission failed.");
             }
+
+            status.textContent = "Thank you! Your message was submitted.";
+            status.style.color = "#218838";
+            contactForm.reset();
         } catch (error) {
-            contactStatus.textContent =
-                "Connection error. Please check your internet and try again.";
-            contactStatus.style.color = "#d52b3c";
+            status.textContent =
+                "Unable to send your message. Please try again or contact the campaign by email.";
+            status.style.color = "#d52b3c";
         } finally {
-            contactSubmit.disabled = false;
-            contactSubmit.textContent = originalButtonText;
+            button.disabled = false;
+            button.textContent = originalText;
         }
     });
 }
+
 
 
 
