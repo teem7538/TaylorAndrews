@@ -1455,6 +1455,113 @@ footer {
       color: red;
    }
 
+   
+/* =================================
+   ABOUT — CAMPAIGN STYLE RESTORE
+================================= */
+
+#about {
+    color: #0b1d32;
+    font-family: "DM Sans", sans-serif;
+}
+
+#about h2 {
+    color: #0b1d32;
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
+#about h3 {
+    color: #0b1d32;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+#about p {
+    color: #69768d;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+#about .copy-number {
+    color: #d52b3c;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+#about .portrait-card {
+    position: relative;
+}
+
+#about .portrait-gradient {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #0b1d32;
+}
+
+#about .governor-portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#about .portrait-info {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 24px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 24px;
+    margin: 0;
+    border-radius: 12px;
+    background: rgba(7, 26, 46, 0.96);
+    color: #fff;
+}
+
+#about .portrait-info strong {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+#about .portrait-info span {
+    color: #b8c5d5;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Responsive typography */
+
+@media (max-width: 768px) {
+    #about h3 {
+        font-size: 1.4rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    #about .portrait-info {
+        bottom: 12px;
+        padding: 14px 16px;
+    }
+
+    #about .portrait-info strong {
+        font-size: 1.1rem;
+    }
+}
+
+
 
 
 
